@@ -3,6 +3,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define COUT(f,data) printf("%"#f,data);
+#define CIN(f,data) scanf("%"#f,data);
+
 #define NUL '\0'
 typedef char CHAR[32];
 typedef char line[255];
@@ -62,6 +65,52 @@ int cmp(const void *a,const void *b){
         return 0;
 }
 
+void ReadFile(FILE *file){
+    LoadFile(file);
+
+
+    qsort(words.word, words.num,sizeof(struct Word), cmp);
+
+    for(int i = 0;i < words.num; ++i){
+        COUT(s:,words.word[i].Chinese);
+
+        line temp;
+        CIN(s,temp);
+
+        if(strcmp(temp, words.word[i].English) == 0){
+            printf("Yes\n");
+        }
+        else{
+            printf("English error\n");
+            i--;
+        }
+    }
+    printf("File End");
+
+    /* fclose(file); */
+    fseek(file, 0, SEEK_SET);
+    return;
+}
+
+void InsertWord(FILE *file){
+
+    CHAR english,chinese;
+    printf("English:");
+    scanf("%[^\n]%*c",english);
+    fprintf(file, "%s ",english);
+    printf("Chinese:");
+    scanf("%[^\n]%*c",chinese);
+    fprintf(file, "%s ",chinese);
+
+
+    
+    
+
+
+    fseek(file, 0, SEEK_SET);
+    return;
+}
+
 int main(){
 
     FILE *file;
@@ -70,24 +119,28 @@ REOPEN:
     printf("请选择文件:");
     scanf("%s%*c",filename);
 
-    file = fopen(filename, "r");
+    file = fopen(filename, "ab+");
     if(file == NULL){
         printf("打开文件失败\n");
         goto REOPEN;
     }
     
-    LoadFile(file);
+    printf("1:读取文件\n"
+           "2:补充单词\n");
+    int choose = 0;
+    CIN(d, &choose);
+    switch (choose) {
+        case 1:
+            LoadFile(file);
+            break;
+        case 2:
+            InsertWord(file);
+            break;
+        default:
+            break;
+    }
 
-
-    qsort(words.word, words.num,sizeof(struct Word), cmp);
-
-    /* printf("num:%d\n",words.num); */
-    /* for(int i = 0;i < words.num; ++i){ */
-        /* printf("%d:",words.word[i].id); */
-        /* printf("%s\n%s\n",words.word[i].English,words.word[i].Chinese); */
-    /* } */
-/*  */
-    fclose(file);
+    ReadFile(file);
 
     return 0;
 }
