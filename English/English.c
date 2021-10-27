@@ -87,21 +87,27 @@ void ReadFile(FILE *file){
     }
     printf("File End");
 
-    /* fclose(file); */
     fseek(file, 0, SEEK_SET);
     return;
 }
 
 void InsertWord(FILE *file){
+    char ch;
 
-    CHAR english,chinese;
-    printf("English:");
-    scanf("%[^\n]%*c",english);
-    fprintf(file, "%s ",english);
-    printf("Chinese:");
-    scanf("%[^\n]%*c",chinese);
-    fprintf(file, "%s ",chinese);
+    do{
 
+        CHAR english,chinese;
+        printf("English:");
+        scanf("%[^\n]%*c",english);
+        fprintf(file, "%s ",english);
+        printf("Chinese:");
+        scanf("%[^\n]%*c",chinese);
+        fprintf(file, "%s\n",chinese);
+        fflush(file);
+
+        printf("按回车继续添加,按其余按键退出添加......");
+        ch = getchar();
+    }while(ch != 'q');
 
     
     
@@ -125,13 +131,14 @@ REOPEN:
         goto REOPEN;
     }
     
+    LoadFile(file);
     printf("1:读取文件\n"
            "2:补充单词\n");
     int choose = 0;
-    CIN(d, &choose);
+    scanf("%d%*c",&choose);
     switch (choose) {
         case 1:
-            LoadFile(file);
+            ReadFile(file);
             break;
         case 2:
             InsertWord(file);
@@ -140,7 +147,7 @@ REOPEN:
             break;
     }
 
-    ReadFile(file);
+    fclose(file);
 
     return 0;
 }
