@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 int sock = 0;
 int namelen = 0;
@@ -82,6 +83,8 @@ int main(){
 
         if(strcmp(buffer, "quit") == 0){
             sock = 0;
+            close(sock);
+            printf("程序正常退出\n");
             exit(0);
         }
 
