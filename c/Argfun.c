@@ -15,7 +15,7 @@ struct node{
 };
 int Argfun(char *format,...){
     int num = 0;
-
+    char ch = 'A';
     // 定义一个可变参数列表,存有va_start,va_arg,va_end以及va_cpy所需要的信息
     va_list args ;
     // 用format初始化args,令函数的以访问可变参数
