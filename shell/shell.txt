@@ -90,7 +90,7 @@ bash运行:
 分支控制:
     if [  ];then
                 # 如果条件成立
-        :       # 空语句,运行结果横为true
+        :       # 空语句,运行结果恒为true
     elif[  ];then
         :
     else

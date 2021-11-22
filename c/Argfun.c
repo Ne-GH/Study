@@ -9,10 +9,11 @@
 #define debug_none(format,args...) printf(format,##args)
 
 
-struct node{
+struct map{
     int   key;
-    char  ch;
+    char  val;
 };
+
 int Argfun(char *format,...){
     int num = 0;
     char ch = 'A';
@@ -29,8 +30,8 @@ int Argfun(char *format,...){
     while(*format != NUL){
         if(*format == '%'){
             if(*(format + 1) == 'n'){
-                struct node temp = va_arg(args, struct node);
-                printf("%d:%c",temp.key,temp.ch);
+                struct map temp = va_arg(args, struct map);
+                printf("%d:%c",temp.key,temp.val);
                 format ++;
             }
         }
@@ -48,10 +49,12 @@ int Argfun(char *format,...){
 int main(){
 
 
-    struct node no = {1,'A'};
-    Argfun("%n",no);
+    struct map no = {1,'A'};
+
+    /* Argfun("%n%n%n%n",no,no,no,no); */
+
     debug_int("\n%d:",no.key);
-    debug_char("%c\n", no.ch);
+    debug_char("%c\n", no.val);
 
     return 0;
 }
