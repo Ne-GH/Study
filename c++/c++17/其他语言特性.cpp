@@ -92,6 +92,17 @@ int main(){
 
 
 
+    // 单参数static_assert
+    // C++17后原来的static_assert要求的用作错误信息的参数变为可选的
+    // 也就是说现在断言失败后输出的诊断信息完全依赖平台的实现
+    
+
+
+
+    // 预处理条件 __has_include(filename)
+    // 如果#include<filename>有效,那么__has_include(filename)被求值为1
+    
+
 
 
 
