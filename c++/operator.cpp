@@ -89,7 +89,7 @@ std::istream& operator >> (std::istream &in,node &no){
     return in;
 }
 // 输出时node 不必为引用类型,否则不可以cout << no1 + no2 这种样式输出
-// 因为no1 + no2运算后为一个友值,对于一个右值自然是不能引用的
+// 因为no1 + no2运算后为一个右值,对于一个右值自然是不能引用的
 std::ostream& operator << (std::ostream &out,node no){
     std::cout << no.id << " ";
     std::cout << no.spend;
