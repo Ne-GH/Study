@@ -36,3 +36,5 @@ start:      ; 告诉编译器程序入口
 code ends
 
 end start
+
+; vim:ft=nasm
