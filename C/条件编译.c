@@ -19,5 +19,23 @@
 int main(){
 
 
+#define a 1;
+#ifdef a//如果使用预处理宏定义a,就编译中间内容
+#define a 1;
+	printf("ifdef部分");
+#endif//选择性编译的结束标志
+
+#define b 0
+#if b//如果预处理定义的b的值为0就编译第一部分
+    printf("b为真时,#if部分");
+#else//否则编译下面
+    printf("b不为0时,#else部分");
+#endif//结束标志
+
+
+#ifndef c//如果没有使用预处理宏定义定义c,就编译
+#define c 1//这种写法属于没有定义c
+    printf("#ifndef,没有编译");
+#endif
     return 0;
 }
