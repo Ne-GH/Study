@@ -11,13 +11,13 @@ class Info{
 
 public:
     Info(){  }
-    Info(string web,string account,string password){ 
-        _webname = web;
+    Info(string webname,string account,string password){ 
+        _webname = webname;
         _account = account;
         _password = password;
     }
-    Info(string web,string account,string password,string email){ 
-        _webname = web;
+    Info(string webname,string account,string password,string email){ 
+        _webname = webname;
         _account = account;
         _password = password;
         _email = email;
@@ -52,9 +52,12 @@ public:
     }
     
 
+
     friend istream &operator >>(istream &in,Info &info){
-        string web_name,account,password,email;
-        in >> web_name >> account >> password >> email;
+        string webname,account,password,email;
+        in >> webname >> account >> password >> email;
+        Info temp_info(webname,account,password,email);
+        info = temp_info;
         return in;
     }
 
