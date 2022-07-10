@@ -52,6 +52,21 @@ public:
     }
     
 
+    bool operator == (Info r_info){
+        if(this->_webname == r_info._webname
+        || this->_account == r_info._account
+        || this->_password == r_info._password
+        || this->_email == r_info._email
+        ){
+            return true;
+        }
+        else
+            return false;
+    }
+
+    bool operator != (Info r_info){
+        return !(*this == r_info);
+    }
 
     friend istream &operator >>(istream &in,Info &info){
         string webname,account,password,email;
@@ -68,6 +83,7 @@ public:
             << "Email:" << info.GetEmail() << endl;
         return out;
     }
+
 
 
 };
