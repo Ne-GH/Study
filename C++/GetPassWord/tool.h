@@ -2,6 +2,8 @@
 #define TOOL_H
 
 #include <iostream>
+#include <algorithm>
+#include <vector>
 #include <string>
 #include <map>
 
