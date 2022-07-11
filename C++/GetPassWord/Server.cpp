@@ -12,12 +12,13 @@ int main(){
     cin >> webname;
     cout << "account:";
     cin >> account;
-    cout << "password";
+    cout << "password:";
     cin >> password;
-    cout << "email";
+    cout << "email:";
     cin >> email;
 
     Info info(webname,account,password,email);
+    im.AddInfo(info);
 
     im.ShowInfo();
 
