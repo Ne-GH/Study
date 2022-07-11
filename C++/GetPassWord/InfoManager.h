@@ -3,7 +3,6 @@
 
 #include "tool.h"
 #include "Info.h"
-#include <fstream>
 
 class InfoManager{
     string _database_filename;
@@ -37,10 +36,7 @@ public:
 
     void AddInfo(Info info){
         _records.push_back(info);
-
-        fstream file(_database_filename,ios::in | ios::out);
-        file.seekp(ios::end);
-        file << info;
+        OutputToFIle(info);
     }
 
 
@@ -65,6 +61,15 @@ public:
         return ret;
     }
 
+    void OutputToFIle(Info info){
+        fstream file(_database_filename.c_str(),ios::in | ios::out | ios::ate);
+        file << info.GetWebName() << endl
+             << info.GetAccount() << endl
+             << info.GetPassWord() << endl
+             << info.GetEmail() << endl;
+
+        file.close();
+    }
     void ShowInfo(){
         for(auto info : _records){
             cout << info << endl;
