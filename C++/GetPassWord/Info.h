@@ -51,6 +51,12 @@ public:
         return _email;
     }
     
+    string to_string(){
+        return "WebName:" + _webname + "\n" 
+            + "Account:" + _account + "\n"
+            + "PassWord:" + _password + "\n"
+            + "Email:" + _email + "\n";
+    }
 
     bool operator == (Info r_info){
         if(this->_webname == r_info._webname
