@@ -7,20 +7,10 @@ int main(){
 
     InfoManager im("./test.database");
 
-    string webname,account,password,email;
-    cout << "webname:";
-    cin >> webname;
-    cout << "account:";
-    cin >> account;
-    cout << "password:";
-    cin >> password;
-    cout << "email:";
-    cin >> email;
+    
+    // im.AddInfo(info);
 
-    Info info(webname,account,password,email);
-    im.AddInfo(info);
-
-    im.ShowInfo();
+    // im.ShowInfo();
 
 
 

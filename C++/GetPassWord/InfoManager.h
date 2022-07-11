@@ -3,6 +3,7 @@
 
 #include "tool.h"
 #include "Info.h"
+#include <cstddef>
 
 class InfoManager{
     string _database_filename;
@@ -37,6 +38,14 @@ public:
     void AddInfo(Info info){
         _records.push_back(info);
         OutputToFIle(info);
+    }
+
+    size_t Size(){
+        return _records.size();
+    }
+
+    Info GetInfoByPos(size_t pos){
+        return _records[pos];
     }
 
 
